@@ -1,11 +1,21 @@
 class Php < Formula
   desc "General-purpose scripting language"
   homepage "https://www.php.net/"
-  # Should only be updated if the new version is announced on the homepage, https://www.php.net/
-  url "https://www.php.net/distributions/php-8.3.6.tar.xz"
-  mirror "https://fossies.org/linux/www/php-8.3.6.tar.xz"
-  sha256 "53c8386b2123af97626d3438b3e4058e0c5914cb74b048a6676c57ac647f5eae"
   license "PHP-3.01"
+  revision 1
+
+  stable do
+    # Should only be updated if the new version is announced on the homepage, https://www.php.net/
+    url "https://www.php.net/distributions/php-8.3.6.tar.xz"
+    mirror "https://fossies.org/linux/www/php-8.3.6.tar.xz"
+    sha256 "53c8386b2123af97626d3438b3e4058e0c5914cb74b048a6676c57ac647f5eae"
+
+    # Backport support for `icu4c` 75
+    patch do
+      url "https://github.com/php/php-src/commit/037855fcd3f2bc8a40d7c9ca485b3be81ce480ea.patch?full_index=1"
+      sha256 "37092174e79df35e8622ff21a83c033fcbadc5ae6d95a515d21c2ccb4860e3d9"
+    end
+  end
 
   livecheck do
     url "https://www.php.net/downloads"
@@ -41,7 +51,7 @@ class Php < Formula
   depends_on "gd"
   depends_on "gettext"
   depends_on "gmp"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "krb5"
   depends_on "libpq"
   depends_on "libsodium"
