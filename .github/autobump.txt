@@ -1902,6 +1902,7 @@ soplex
 sound-touch
 sourcery
 spack
+spdlog
 spectral-cli
 spglib
 sphinx-doc
