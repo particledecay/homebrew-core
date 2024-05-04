@@ -1,8 +1,8 @@
 class Simutrans < Formula
   desc "Transport simulator"
   homepage "https://www.simutrans.com/"
-  url "svn://servers.simutrans.org/simutrans/trunk/", revision: "10421"
-  version "123.0.1"
+  url "svn://servers.simutrans.org/simutrans/trunk/", revision: "11164"
+  version "124.0"
   license "Artistic-1.0"
   head "https://github.com/aburch/simutrans.git", branch: "master"
 
@@ -38,13 +38,13 @@ class Simutrans < Formula
   fails_with gcc: "5"
 
   resource "pak64" do
-    url "https://downloads.sourceforge.net/project/simutrans/pak64/123-0/simupak64-123-0.zip"
-    sha256 "b8a0a37c682d8f62a3b715c24c49bc738f91d6e1e4600a180bb4d2e9f85b86c1"
+    url "https://downloads.sourceforge.net/project/simutrans/pak128/pak128%20for%20ST%20124up%20%282.9%29/simupak128-2.9-for124.zip"
+    sha256 "acb2168b4ca38acbab41b147a7c60eebba4b5bfe58fd87467c5fe94a10b85561"
   end
 
   def install
     # These translations are dynamically generated.
-    system "./get_lang_files.sh"
+    system "./tools/get_lang_files.sh"
 
     system "cmake", "-B", "build", "-S", ".", *std_cmake_args
     system "cmake", "--build", "build"
